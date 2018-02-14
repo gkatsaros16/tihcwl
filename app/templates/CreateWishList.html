@@ -1,0 +1,39 @@
+<form ng-if="true" name="newWishListForm">
+  <div class="row">
+    <div class="col-xs-6">
+
+      <div ng-repeat="band in bands" class="form-group">
+        <label for="band_{{ $index + 1 }}" class="col-form-label">
+          <p>Band {{$index + 1}}:</p>
+        </label>
+        <div>
+          <input class="form-control" type="text" required placeholder="Enter Band" ng-model="band.name" id="band_{{ $index + 1}}">
+        </div>
+      </div>
+      <button type="button" ng-click="addBand()" class="btn btn-secondary">Add Band</button>
+      <br>
+      <br>
+      <button type="submit" ng-click="saveWishList(bands, newWishListForm)" ng-disabled="newEventForm.$invalid" class="btn btn-primary">Submit</button>
+      <a href="/" class="btn">Cancel</a>
+    </div>
+
+    <div ng-if="bands[0].name" class="col-xs-6 col-centered" >
+      <div style="height: 500px; width: 300px; border: 1px solid black; margin: 0 122px 0 122px">
+        <div style="height: 150px; width: 300px; border: 1px solid black;">
+          <p>Wishlist User Name</p>
+          <img ng-src="../img/images.png" style="width:100px;height:100px; margin: 0 100px 0 100px; border-radius: 100%;" />
+        </div>
+        <div ng-if="bands" ng-repeat="band in bands">
+          <p>{{ band.name}}</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</form>
+
+
+<div ng-if="false" style="width: 100%; margin: auto;">
+  <p>You need to sign into make a wish list.</p>
+  <button type="submit" ng-click="loginWithFacebook()" class="btn btn-primary">Login to Make Your Wish List</button>
+</div>
