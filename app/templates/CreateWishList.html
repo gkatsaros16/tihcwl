@@ -8,9 +8,10 @@
         </label>
         <div>
           <input class="form-control" type="text" required placeholder="Enter Band" ng-model="band.name" id="band_{{ $index + 1}}">
+          <span ng-click="removeBand(band.name)">delete</span>
         </div>
       </div>
-      <button type="button" ng-click="addBand()" class="btn btn-secondary">Add Band</button>
+      <button type="button" style="display: block; margin: 0 auto; outline-style: none;" ng-click="addBand()" class="btn btn-success">Add Band</button>
       <br>
       <br>
       <button type="submit" ng-click="saveWishList(bands, newWishListForm)" ng-disabled="newEventForm.$invalid" class="btn btn-primary">Submit</button>

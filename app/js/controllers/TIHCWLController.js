@@ -2,8 +2,18 @@
 
 tihcwlApp.controller('TIHCWLController',
   function TIHCWLController($scope, firebaseGet, $firebaseArray) {
-    let bandListRef = firebaseGet.getBandList();
-    let bandList = $firebaseArray(bandListRef);
-    $scope.bandList = bandList;
+    $scope.masterList = [];
+
+    let masterListRef = firebaseGet.getMasterList();
+
+    masterListRef.once('value').then(function(snapshot) {
+      snapshot.forEach(function(band){
+        $scope.masterList.push({
+          name: band.key,
+          count: band.val()
+        });
+      });
+      $scope.$apply();
+    });
   }
 )

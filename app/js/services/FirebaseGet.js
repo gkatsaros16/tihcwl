@@ -1,17 +1,19 @@
 tihcwlApp.factory('firebaseGet', function(){
-  var userId = 123456;
   return {
     getWishLists: function() {
-      return firebase.database().ref().child("wishLists");
+      return {
+        users: firebase.database().ref().child("Users"),
+        wishList: firebase.database().ref().child("WishList")
+      }
     },
     getWishListById: function(userId) {
-      return firebase.database().ref().child("wishLists").child(userId);
+      return firebase.database().ref().child("WishList").child(userId);
     },
-    getBandList: function() {
-      return firebase.database().ref().child("bandList");
+    getMasterList: function() {
+      return firebase.database().ref().child("MasterList");
     },
     getBandListbyId: function(bandId) {
-      return firebase.database().ref().child("bandList").child(bandId);
+      return firebase.database().ref().child("bandList").child(bandId.toString());
     }
   }
 })
