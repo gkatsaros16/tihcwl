@@ -1,7 +1,7 @@
 <div>
   <h1> Wish Lists </h1>
   <div class="row">
-    <div ng-repeat="wishList in wishLists" class="col-xs-3">
+    <div ng-if="wishList.bands.length > 0" ng-repeat="wishList in wishLists" class="col-xs-3">
       Wish List {{ $index + 1 }} ({{ wishList.user }})
       <div style="height: 200px; border: 1px solid black;">
         <div ng-repeat="band in wishList.bands">

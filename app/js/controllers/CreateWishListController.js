@@ -8,7 +8,7 @@ tihcwlApp.controller('CreateWishListController',
     userWishListRef.once('value').then(function(snapshot) {
       snapshot.forEach(function(band){
         $scope.bands.push({
-          name: band.key,
+          name: band.val(),
         });
       });
       if (!$scope.bands[0]) {

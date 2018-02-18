@@ -9,8 +9,8 @@ tihcwlApp.controller('TIHCWLController',
     masterListRef.once('value').then(function(snapshot) {
       snapshot.forEach(function(band){
         $scope.masterList.push({
-          name: band.key,
-          count: band.val()
+          name: band.val().name,
+          count: band.val().count
         });
       });
       $scope.$apply();

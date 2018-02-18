@@ -10,7 +10,7 @@ tihcwlApp.factory('firebaseGet', function(){
       return firebase.database().ref().child("WishList").child(userId);
     },
     getMasterList: function() {
-      return firebase.database().ref().child("MasterList");
+      return firebase.database().ref("MasterList");
     },
     getBandListbyId: function(bandId) {
       return firebase.database().ref().child("bandList").child(bandId.toString());

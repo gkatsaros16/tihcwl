@@ -7,14 +7,14 @@ tihcwlApp.controller('WishListsController',
 
     wishListsRefs.users.once('value').then(function(snapshot1) {
       snapshot1.forEach(function(user){
-        wishListsRefs.wishList.child(user.key).once('value').then(function(snapshot2){
+        wishListsRefs.wishList.child(user.val()).once('value').then(function(snapshot2){
           var wishList = [];
           snapshot2.forEach(function(band){
-            wishList.push(band.key);
+            wishList.push(band.val());
           })
 
           $scope.wishLists.push({
-            user: user.key,
+            user: user.val(),
             bands: wishList
           })
         }).then(function(){$scope.$apply()});
