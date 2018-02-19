@@ -1,8 +1,8 @@
 <div>
   <h1 style="margin-bottom: 90px;"> Wish Lists </h1>
   <div class="row">
-    <div ng-repeat="wishList in wishLists">
-      <div class="col-xs-2">
+    <div ng-if="!wishList.isPrivate" ng-repeat="wishList in wishLists">
+      <div class="col-xs-2" style="margin-bottom: 100px;">
         <div style="min-height: 275px; border: 1px solid black; border-radius: 5px; position: relative;">
           <img ng-src="{{wishList.photoURL}}" style="border: 1px solid; position: relative; top: -50px; width:100px;height:100px; display: block; margin: auto; border-radius: 100%;" />
           <div style="position: relative; top: -25px; margin-left: 20px;">

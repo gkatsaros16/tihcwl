@@ -11,10 +11,11 @@ tihcwlApp.controller('WishListsController',
           snapshot2.forEach(function(wishlist){
             if (users.key == wishlist.key) {
               var userObj = users.val()
-              
+
               $scope.wishLists.push({
                 name: userObj.name,
                 photoURL: userObj.photoURL,
+                isPrivate: userObj.isPrivate,
                 bands: wishlist.val()
               })
             }

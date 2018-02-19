@@ -8,7 +8,8 @@ tihcwlApp.controller('AccountController',
       var updateObj = {}
       updateObj[$scope.uid] = {
         name: updateParams.name,
-        photoURL: updateParams.photoURL
+        photoURL: updateParams.photoURL,
+        isPrivate: updateParams.isPrivate
       }
 
       firebase.database().ref("Users/").update(updateObj)
