@@ -1,11 +1,16 @@
 <div>
-  <h1> Wish Lists </h1>
+  <h1 style="margin-bottom: 90px;"> Wish Lists </h1>
   <div class="row">
-    <div ng-repeat="wishList in wishLists" class="col-xs-3">
-      Wish List {{ $index + 1 }} ({{ wishList.name }})
-      <div style="height: 200px; border: 1px solid black;">
-        <div ng-repeat="band in wishList.bands">
-          {{ band }}
+    <div ng-repeat="wishList in wishLists">
+      <div class="col-xs-2">
+        <div style="min-height: 275px; border: 1px solid black; border-radius: 5px; position: relative;">
+          <img ng-src="{{wishList.photoURL}}" style="border: 1px solid; position: relative; top: -50px; width:100px;height:100px; display: block; margin: auto; border-radius: 100%;" />
+          <div style="position: relative; top: -25px; margin-left: 20px;">
+            <div ng-repeat="band in wishList.bands">
+              {{$index + 1}}. {{ band }}
+            </div>
+          </div>
+          <span style="position: absolute; bottom: -5px; right: 0; left: 0; text-align: center;">{{ wishList.name }}</p>
         </div>
       </div>
     </div>

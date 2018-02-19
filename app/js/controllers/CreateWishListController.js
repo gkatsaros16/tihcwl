@@ -1,17 +1,26 @@
 'use strict';
 
 tihcwlApp.controller('CreateWishListController',
-  function CreateWishListController($scope, firebasePost, firebaseGet, $firebaseArray) {
+  function CreateWishListController($scope, $route, firebasePost, firebaseGet, $firebaseArray) {
     $scope.bands = [];
 
     var userWishListRef = firebaseGet.getWishListById($scope.uid);
-    
+
     userWishListRef.once('value').then(function(snapshot) {
-      snapshot.forEach(function(band){
-        $scope.bands.push({
-          name: band.val(),
-        });
-      });
+      var bands = snapshot.val()
+      if (bands == null) {
+        $route.reload();
+      }
+
+      if (bands) {
+        bands.forEach(function(band){
+          $scope.bands.push({name: band})
+        })
+      } else {
+        $scope.bands.push({})
+      }
+
+
       if (!$scope.bands[0]) {
         $scope.bands = [{}];
       }
@@ -38,5 +47,7 @@ tihcwlApp.controller('CreateWishListController',
         $scope.bands.splice(index, 1);
       };
     };
+
+    $scope.photoURL ? firebase.auth().currentUser.photoURL : '../img/images.png'
   }
 )

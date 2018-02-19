@@ -16,6 +16,10 @@ var tihcwlApp = angular.module('tihcwlApp', ['ngResource', 'ngRoute', 'firebase'
     {
       templateUrl: 'templates/TIHCWL.html',
       controller: 'TIHCWLController'
+    }).when('/account',
+    {
+      templateUrl: 'templates/account.html',
+      controller: 'AccountController'
     }).otherwise(
     {
       redirectTo: '/TIHCWL'

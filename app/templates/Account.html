@@ -1,0 +1,49 @@
+<form ng-if="true" name="accountForm">
+  <div class="row">
+    <div class="col-xs-6">
+        <div>
+          <label for="displayName" class="col-form-label">
+            <p>Change Display Name</p>
+          </label>
+          <input class="form-control" type="text" required placeholder="" ng-model="userDetails.name" id="dispalName">
+          <br>
+          <label for="displayName" class="col-form-label">
+            <p>Change Photo</p>
+          </label>
+          <input class="form-control" type="text" required placeholder="" ng-model="userDetails.photoURL" id="photoURL">
+        </div>
+        <br>
+        <br>
+      <button type="submit" ng-disabled="!accountForm.$dirty" ng-click="updateUserDetails(userDetails)" class="btn btn-primary">Submit</button>
+      <a href="/" class="btn">Cancel</a>
+    </div>
+
+    <div class="col-xs-6">
+      <div class="row">
+        <h2>Wishlist Preview:</h2>
+      </div>
+      <div class="row">
+        <div class="col-xs-4"></div>
+        <div class="col-xs-4 col-centered" >
+          <div style="min-height: 275px; border: 1px solid black; border-radius: 5px; position: relative; margin-top:65px;">
+            <img ng-src="{{userDetails.photoURL}}" style="border: 1px solid; position: relative; top: -50px; width:100px;height:100px; display: block; margin: auto; border-radius: 100%;" />
+            <div style="position: relative; top: -25px; margin-left: 20px;">
+                <div>1. Vein</div>
+                <div>2. Typecaste</div>
+                <div>3. Buried Dreams</div>
+                <div>4. Sanction</div>
+                <div>5. Jesus Piece</div>
+                <div>6. Trapped Under Ice</div>
+                <div>7. Backtrack</div>
+            </div>
+            <span style="position: absolute; bottom: -5px; right: 0; left: 0; text-align: center;">{{ userDetails.name }}</p>
+          </div>
+          <div style="color: red; font-size: 9px;">**Sample Bands Displayed</div>
+        </div>
+        <div class="col-xs-4"></div>
+      </div>
+    </div>
+
+
+  </div>
+</form>

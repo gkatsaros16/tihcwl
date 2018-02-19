@@ -5,7 +5,6 @@ tihcwlApp.controller('AuthController',
     firebase.auth().onAuthStateChanged(function(user) {
       if (user) {
         // User is signed in.
-        $scope.displayName = user.displayName;
         $scope.email = user.email;
         $scope.emailVerified = user.emailVerified;
         $scope.photoURL = user.photoURL;
@@ -17,9 +16,20 @@ tihcwlApp.controller('AuthController',
         firebaseGet.getUserById(user.uid).once('value').then(function(snapshot){
           if (!snapshot.val()) {
             var newUser = {}
-            newUser[user.uid] = user.displayName
+            newUser[user.uid] = {
+              name: user.displayName,
+              photoURL: user.photoURL
+            }
             firebase.database().ref("Users/").update(newUser)
           }
+
+          if (snapshot.val()) {
+            $scope.userDetails = snapshot.val();
+          } else {
+             $scope.userDetails.name = user.displayName;
+             $scope.userDetails.photoURL = user.photoURL;
+          }
+          $scope.$apply()
         })
         // ...
       } else {
@@ -33,6 +43,8 @@ tihcwlApp.controller('AuthController',
         $scope.currentUser = null;
       }
     });
+
+    $scope.user = firebase.auth().currentUser;
 
     $scope.signInGmail = function() {
       firebaseAuth.googleSignIn();
