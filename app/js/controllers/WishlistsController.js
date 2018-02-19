@@ -1,7 +1,7 @@
 'use strict';
 
-tihcwlApp.controller('WishListsController',
-  function WishListsController($scope, firebaseGet, $firebaseArray) {
+tihcwlApp.controller('WishlistsController',
+  function WishlistsController($scope, firebaseGet, $firebaseArray) {
     $scope.wishLists = [];
     let wishListsRefs = firebaseGet.getWishLists();
 

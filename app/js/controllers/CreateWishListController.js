@@ -6,36 +6,35 @@ tihcwlApp.controller('CreateWishListController',
 
     var userWishListRef = firebaseGet.getWishListById($scope.uid);
 
-    userWishListRef.once('value').then(function(snapshot) {
-      var bands = snapshot.val()
-      if (bands == null) {
-        $route.reload();
-      }
+    if ($scope.currentUser) {
+      userWishListRef.once('value').then(function(snapshot) {
+        var bands = snapshot.val()
+        if (bands) {
+          bands.forEach(function(band){
+            $scope.bands.push({name: band})
+          })
+        } else {
+          $scope.bands.push({})
+        }
 
-      if (bands) {
-        bands.forEach(function(band){
-          $scope.bands.push({name: band})
-        })
-      } else {
-        $scope.bands.push({})
-      }
-
-
-      if (!$scope.bands[0]) {
-        $scope.bands = [{}];
-      }
-      $scope.$apply()
-    });
+        if (!$scope.bands[0]) {
+          $scope.bands = [{}];
+        }
+        $scope.$apply()
+      });
+    }
 
     $scope.saveWishList = function(wishList, newWishListForm){
       if (newWishListForm.$valid) {
         console.log($scope.uid)
         firebasePost.writeWishList(wishList, $scope.uid)
+        $scope.updated = true;
       }
     };
 
     $scope.addBand = function(){
       $scope.bands.push({});
+      $scope.updated = false;
     };
 
     $scope.removeBand = function(bandName){
@@ -46,6 +45,7 @@ tihcwlApp.controller('CreateWishListController',
       if (index > -1) {
         $scope.bands.splice(index, 1);
       };
+      $scope.updated = false;
     };
 
     $scope.photoURL ? firebase.auth().currentUser.photoURL : '../img/images.png'

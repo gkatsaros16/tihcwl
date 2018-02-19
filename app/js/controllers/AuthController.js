@@ -41,6 +41,8 @@ tihcwlApp.controller('AuthController',
         $scope.uid = "";
         $scope.providerData = "";
         $scope.currentUser = null;
+        $scope.userDetails.name = "";
+        $scope.userDetails.photoURL = "";
       }
     });
 

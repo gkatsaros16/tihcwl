@@ -2,12 +2,12 @@
 var tihcwlApp = angular.module('tihcwlApp', ['ngResource', 'ngRoute', 'firebase', 'angular.filter'])
   .config(function($routeProvider, $locationProvider){
     $locationProvider.hashPrefix('');
-    $routeProvider.when('/wishLists',
+    $routeProvider.when('/WishLists',
     {
       templateUrl: 'templates/WishLists.html',
-      controller: 'WishListsController'
+      controller: 'WishlistsController'
     })
-    .when('/createWishList',
+    .when('/CreateWishList',
     {
       templateUrl: 'templates/CreateWishList.html',
       controller: 'CreateWishListController'
@@ -18,7 +18,7 @@ var tihcwlApp = angular.module('tihcwlApp', ['ngResource', 'ngRoute', 'firebase'
       controller: 'TIHCWLController'
     }).when('/account',
     {
-      templateUrl: 'templates/account.html',
+      templateUrl: 'templates/Account.html',
       controller: 'AccountController'
     }).otherwise(
     {

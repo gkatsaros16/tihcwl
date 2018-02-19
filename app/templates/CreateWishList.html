@@ -1,4 +1,4 @@
-<form ng-if="true" name="newWishListForm">
+<form ng-if="currentUser" name="newWishListForm">
   <div class="row">
     <div class="col-xs-6">
 
@@ -14,8 +14,9 @@
       <button type="button" style="display: block; margin: 0 auto; outline-style: none;" ng-if="bands.length < 7" ng-click="addBand()" class="btn btn-success">Add Band</button>
       <br>
       <br>
-      <button type="submit" ng-click="saveWishList(bands, newWishListForm)" ng-disabled="newEventForm.$invalid" class="btn btn-primary">Submit</button>
+      <button type="submit" ng-click="saveWishList(bands, newWishListForm)" ng-disabled="newWishListForm.$invalid || !newWishListForm.$dirty " class="btn btn-primary">Submit</button>
       <a href="/" class="btn">Cancel</a>
+      <div ng-if="updated" style="color:#5cb85c; display: inline-block; float: right; line-height: 45px;">Updated!</div>
     </div>
 
     <div ng-if="bands[0].name" class="col-xs-6">
@@ -42,7 +43,7 @@
 </form>
 
 
-<div ng-if="false" style="width: 100%; margin: auto;">
-  <p>You need to sign into make a wish list.</p>
-  <button type="submit" ng-click="loginWithFacebook()" class="btn btn-primary">Login to Make Your Wish List</button>
+<div ng-if="!currentUser" style="width: 100%; margin: auto;">
+  <p>You need to sign in to make a wish list.</p>
+  <button type="submit" ng-click="signInGmail()" class="btn btn-primary">Login to Make Your Wish List</button>
 </div>

@@ -34,8 +34,8 @@
           <!-- Collect the nav links, forms, and other content for toggling -->
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-              <li><a class="" href="#/wishLists">Wish Lists<span class="sr-only">(current)</span></a></li>
-              <li><a class="" href="#/createWishList">Your Wish List ( {{ userDetails.name }} )</a></li>
+              <li><a class="" href="#/WishLists">Wish Lists<span class="sr-only">(current)</span></a></li>
+              <li><a class="" href="#/CreateWishList">Your Wish List ( {{ userDetails.name }} )</a></li>
             </ul>
 
             <ul class="nav navbar-nav navbar-right">
@@ -46,30 +46,10 @@
               <li ng-if="currentUser">
                 <a style="cursor: pointer;" ng-click="signOut()">Logout</a>
               </li>
-              <!-- <li class="dropdown">
-                <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
-                <ul class="dropdown-menu">
-                  <li><a href="#">Action</a></li>
-                  <li><a href="#">Another action</a></li>
-                  <li><a href="#">Something else here</a></li>
-                  <li role="separator" class="divider"></li>
-                  <li><a href="#">Separated link</a></li>
-                </ul>
-              </li> -->
             </ul>
-          </div><!-- /.navbar-collapse -->
-        </div><!-- /.container-fluid -->
-      </nav>
-
-      <!-- <nav class="navbar navbar-inverse bg-inverse">
-        <a class="navbar-brand" href="#/">TIHCWL</a>
-        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-          <div class="navbar-nav nav-item-vertical-spacing">
-            <a class="" href="#/wishLists">Wish Lists<span class="sr-only">(current)</span></a>
-            <a class="" href="#/createWishList">Your Wish List</a>
           </div>
         </div>
-      </nav> -->
+      </nav>
       <ng-view></ng-view>
     </div>
     <!-- Firebase -->
@@ -94,7 +74,7 @@
     <script src="/lib/angular/angular-resource.js"></script>
     <script src="/lib/angular/angular-route.js"></script>
     <script src="/js/app.js"></script>
-    <script src="/js/controllers/WishListsController.js"></script>
+    <script src="/js/controllers/WishlistsController.js"></script>
     <script src="/js/controllers/CreateWishListController.js"></script>
     <script src="/js/controllers/TIHCWLController.js"></script>
     <script src="/js/controllers/AuthController.js"></script>

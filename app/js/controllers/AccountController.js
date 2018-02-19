@@ -5,6 +5,10 @@ tihcwlApp.controller('AccountController',
     var user = firebase.auth().currentUser;
 
     $scope.updateUserDetails = function (updateParams) {
+      if (updateParams.isPrivate == null) {
+        updateParams.isPrivate = false;
+      }
+
       var updateObj = {}
       updateObj[$scope.uid] = {
         name: updateParams.name,
