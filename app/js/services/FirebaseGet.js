@@ -2,9 +2,12 @@ tihcwlApp.factory('firebaseGet', function(){
   return {
     getWishLists: function() {
       return {
-        users: firebase.database().ref().child("Users"),
-        wishList: firebase.database().ref().child("WishList")
+        users: firebase.database().ref("Users"),
+        wishLists: firebase.database().ref("WishList")
       }
+    },
+    getUserById: function(uid) {
+      return firebase.database().ref("Users/" + uid)
     },
     getWishListById: function(userId) {
       return firebase.database().ref().child("WishList").child(userId);

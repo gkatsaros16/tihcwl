@@ -4,7 +4,8 @@ tihcwlApp.controller('CreateWishListController',
   function CreateWishListController($scope, firebasePost, firebaseGet, $firebaseArray) {
     $scope.bands = [];
 
-    var userWishListRef = firebaseGet.getWishListById('Geokatz');
+    var userWishListRef = firebaseGet.getWishListById($scope.uid);
+    
     userWishListRef.once('value').then(function(snapshot) {
       snapshot.forEach(function(band){
         $scope.bands.push({
@@ -19,7 +20,8 @@ tihcwlApp.controller('CreateWishListController',
 
     $scope.saveWishList = function(wishList, newWishListForm){
       if (newWishListForm.$valid) {
-        firebasePost.writeWishList(wishList)
+        console.log($scope.uid)
+        firebasePost.writeWishList(wishList, $scope.uid)
       }
     };
 

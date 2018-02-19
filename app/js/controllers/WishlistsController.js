@@ -6,18 +6,19 @@ tihcwlApp.controller('WishListsController',
     let wishListsRefs = firebaseGet.getWishLists();
 
     wishListsRefs.users.once('value').then(function(snapshot1) {
-      snapshot1.forEach(function(user){
-        wishListsRefs.wishList.child(user.val()).once('value').then(function(snapshot2){
-          var wishList = [];
-          snapshot2.forEach(function(band){
-            wishList.push(band.val());
+      snapshot1.forEach(function(users){
+        console.log(users.val())
+        wishListsRefs.wishLists.once('value').then(function(snapshot2){
+          snapshot2.forEach(function(wishlist){
+            if (users.key == wishlist.key) {
+              $scope.wishLists.push({
+                name: users.val(),
+                bands: wishlist.val()
+              })
+            }
           })
-
-          $scope.wishLists.push({
-            user: user.val(),
-            bands: wishList
-          })
-        }).then(function(){$scope.$apply()});
+          $scope.$apply();
+        })
       })
     })
   }

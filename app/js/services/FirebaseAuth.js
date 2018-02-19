@@ -1,4 +1,4 @@
-tihcwlApp.factory('firebaseAuth', function(){
+tihcwlApp.factory('firebaseAuth', function($window, $route){
   var provider = new firebase.auth.GoogleAuthProvider();
 
   return {
@@ -9,6 +9,7 @@ tihcwlApp.factory('firebaseAuth', function(){
       // The signed-in user info.
       var user = result.user;
       // ...
+      $route.reload();
       }).catch(function(error) {
         // Handle Errors here.
         var errorCode = error.code;
@@ -18,6 +19,16 @@ tihcwlApp.factory('firebaseAuth', function(){
         // The firebase.auth.AuthCredential type that was used.
         var credential = error.credential;
         // ...
+      });
+    },
+
+    signOut: function() {
+      firebase.auth().signOut().then(function() {
+        $window.location.href = '#/tihcwl';
+        $route.reload();
+        console.log('Signed Out');
+      }, function(error) {
+        console.error('Sign Out Error', error);
       });
     }
   }

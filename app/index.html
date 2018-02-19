@@ -39,8 +39,8 @@
             </ul>
 
             <ul class="nav navbar-nav navbar-right">
-              <li><a style="cursor: pointer;" ng-click="signInGmail()">Login</a></li>
-              <li><a style="cursor: pointer;" ng-click="signOut()">Logout</a></li>
+              <li><a style="cursor: pointer;" ng-if="!currentUser" ng-click="signInGmail()">Login</a></li>
+              <li><a style="cursor: pointer;" ng-if="currentUser" ng-click="signOut()">Logout</a></li>
               <!-- <li class="dropdown">
                 <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
                 <ul class="dropdown-menu">

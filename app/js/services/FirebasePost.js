@@ -1,18 +1,17 @@
-tihcwlApp.factory('firebasePost', function($firebaseArray, firebaseGet){
+tihcwlApp.factory('firebasePost', function($firebaseArray, firebaseGet, firebaseAuth){
   var database = firebase.database();
-  var userId = 'Geokatz';
 
   return {
-    writeWishList: function(bandArray) {
+    writeWishList: function(bandArray, uid) {
       var updateObject = {};
       bandArray.forEach(function(band){
         updateObject[band.name] = true;
       })
 
-      this.updateWishlists(bandArray);
+      this.updateWishlists(bandArray, uid);
     },
 
-    updateWishlists: function(updatedWishlist) { // [a,b]
+    updateWishlists: function(updatedWishlist, userId) { // [a,b]
       //get previously saved wl for comparison
       var prevWishlistRef = firebaseGet.getWishListById(userId)
       var newWishList = []
